@@ -5,6 +5,8 @@ import store from './store'
 import vuetify from './plugins/vuetify';
 import firebase from 'firebase';
 
+Vue.config.productionTip = false
+
 firebase.initializeApp({
   apiKey: "AIzaSyAUClb2ZU6Wonsj-8TXETAJDbbyWmX2CYo",
   authDomain: "vue-web-55831.firebaseapp.com",
@@ -14,8 +16,6 @@ firebase.initializeApp({
   messagingSenderId: "830269490533",
   appId: "1:830269490533:web:48c2a2d62324cc6bbdcd8c"
 })
-
-Vue.config.productionTip = false
 
 const unsubscribe = firebase.auth()
 .onAuthStateChanged((firebaseUser) => {
