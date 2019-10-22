@@ -5,6 +5,13 @@ import store from './store'
 import vuetify from './plugins/vuetify';
 import firebase from 'firebase';
 
+import axios from 'axios'
+import VueAxios from 'vue-axios'
+Vue.use(VueAxios, axios)
+
+// Adding URL for the API
+axios.defaults.baseURL = 'http://localhost:3000/api';
+
 Vue.config.productionTip = false
 
 firebase.initializeApp({

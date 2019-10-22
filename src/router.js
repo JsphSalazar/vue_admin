@@ -9,6 +9,7 @@ const routerOptions = [
   { path: '/signin', component: 'Signin' },
   { path: '/signup', component: 'Signup' },
   { path: '/home', component: 'Home', meta: { requiresAuth: true} },
+  { path: '/dishes', component: 'Dishes', meta: { requiresAuth: true}},
   { path: '*', component: 'NotFound'}
 ]
 

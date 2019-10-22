@@ -8,11 +8,11 @@
         <form @submit.prevent="userSignUp">
           <v-layout column>
             <v-flex>
-              <v-flex>
+              <!-- <v-flex>
                 <v-alert type="error" dismissible v-model="alert">
-                  {{error}}
+                  {{ error }}
                 </v-alert>
-              </v-flex>
+              </v-flex> -->
               <v-text-field
                 name="email"
                 label="Email"

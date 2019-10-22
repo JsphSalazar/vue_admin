@@ -8,7 +8,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    appTitle: 'Vue_Admin',
+    appTitle: 'Rate-IT',
     user: null,
     error: null,
     loading: false

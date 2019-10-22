@@ -1,32 +1,13 @@
 <template>
   <v-app>
-    <v-navigation-drawer v-model="sidebar" app>
-      <v-list>
-        <v-list-tile
-          v-for="item in menuItems"
-          :key="item.title"
-          :to="item.path">
-          <v-list-tile-action>
-            <v-icon>{{ item.icon }}</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-content>{{ item.title }}</v-list-tile-content>
-        </v-list-tile>
-        <v-list-tile v-if="isAuthenticated" @click="userSignOut">
-          <v-list-tile-action>
-            <v-icon>mdi-exit-to-app</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-content>Sign Out</v-list-tile-content>
-        </v-list-tile>
-      </v-list>
-    </v-navigation-drawer>
-
     <v-app-bar app>
-      <span class="hidden-sm-and-up">
-        <v-toolbar-side-icon @click="sidebar = !sidebar">
-        </v-toolbar-side-icon>
-      </span>
-      <v-toolbar-title>
-        <router-link to="/" tag="span" style="cursor: pointer">
+      <v-app-bar-nav-icon @click="sidebar = !sidebar"></v-app-bar-nav-icon>
+      <v-toolbar-title class="headline text-uppercase">
+        <router-link 
+          to="/" 
+          tag="span" 
+          style="cursor: pointer"
+        >
           {{ appTitle }}
         </router-link>
       </v-toolbar-title>
@@ -46,6 +27,49 @@
         </v-btn>
       </v-toolbar-items>
     </v-app-bar>
+
+    <v-navigation-drawer app
+      v-model="sidebar" 
+      absolute
+      temporary
+    >
+    <v-layout column>
+      <v-list-item>
+        <v-list-item-avatar>
+          <v-img src="https://randomuser.me/api/portraits/men/78.jpg"></v-img>
+        </v-list-item-avatar>
+
+        <v-list-item-content>
+          <v-list-item-title>John Leider</v-list-item-title>
+        </v-list-item-content>
+      </v-list-item>
+    </v-layout>
+
+    <v-list>
+        <v-list-item
+          v-for="item in menuItems"
+          :key="item.title"
+          :to="item.path"
+        >
+          <v-list-item-icon>
+            <v-icon>{{ item.icon }}</v-icon>
+          </v-list-item-icon>
+
+          <v-list-item-content>
+            <v-list-item-title>{{ item.title }}</v-list-item-title>
+          </v-list-item-content>
+          </v-list-item>
+
+          <v-list-tile v-if="isAuthenticated" @click="userSignOut">
+            <v-list-item-icon>
+              <v-icon>mdi-exit-to-app</v-icon>
+            </v-list-item-icon>
+            <v-list-tile-content>Sign Out</v-list-tile-content>
+          </v-list-tile>
+      </v-list>
+    </v-navigation-drawer>
+
+
     
     <v-content>
       <router-view></router-view>
@@ -72,7 +96,8 @@ export default {
     menuItems () {
       if(this.isAuthenticated) {
         return [
-          { title: 'Home', path: '/home', icon: 'mdi-home'}
+          { title: 'Home', path: '/home', icon: 'mdi-home'},
+          { title: 'Dishes', path: '/dishes', icon: 'mdi-folder'}
         ]
       }else {
         return [

@@ -1,17 +1,19 @@
 <template>
-  <v-container fluid>
-    <v-layout row wrap>
-      <v-flex xs12 class="text-xs-center" mt-5>
-        <h1>Sign In</h1>
-      </v-flex>
-      <v-flex xs12 sm6 offset-sm3 mt-3>
-        <form @submit.prevent="userSignIn">
+  <v-container class="ma-10">
+    <v-card
+      class="mx-auto"
+      max-width="500"
+      max-height="600"
+      outlined
+    >
+    <div class="pa-3">
+        <form @submit.prevent="userSignIn" >
           <v-layout column>
-            <v-flex>
+            <!-- <v-flex>
               <v-alert type="error" dismissible v-model="alert">
                 {{ error }}
               </v-alert>
-            </v-flex>
+            </v-flex> -->
             <v-flex>
               <v-text-field
                 name="email"
@@ -30,13 +32,13 @@
                 v-model="password"
                 required></v-text-field>
             </v-flex>
-            <v-flex class="text-xs-center" mt-5>
-              <v-btn color="primary" type="submit">Sign In</v-btn>
-            </v-flex>
+            <v-card-actions class="justify-center">
+                <v-btn class="ma-2" x-large fab color="primary" type="submit" :disabled="loading">Sign In</v-btn>
+            </v-card-actions>
           </v-layout>
         </form>
-      </v-flex>
-    </v-layout>
+    </div>
+    </v-card>
   </v-container>
 </template>
 
